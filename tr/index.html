@@ -3,14 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (function () {
+            var ua = navigator.userAgent || "";
+            var platform = navigator.platform || "";
+            var touch = navigator.maxTouchPoints || 0;
+            var coarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+            var ipad = /iPad|iPhone|iPod/i.test(ua) || /iPad|iPhone|iPod/i.test(platform) || ((/Mac/i.test(platform) || /Macintosh/i.test(ua)) && (touch > 0 || coarse));
+            var os = /Android/i.test(ua) ? "android" : (ipad ? "ios" : "");
+            if (os) document.documentElement.classList.add("os-" + os);
+            if (os === "android") {
+                document.addEventListener("DOMContentLoaded", function () {
+                    var play = "https://play.google.com/store/apps/details?id=com.ohmyapp.decibel";
+                    var links = document.querySelectorAll('a[href*="apps.apple.com"]');
+                    for (var i = 0; i < links.length; i++) {
+                        if (links[i].classList.contains("store-ios")) continue;
+                        links[i].href = play;
+                    }
+                });
+            }
+        })();
+    </script>
     
     <!-- Primary Meta Tags -->
-    <title>Desibel Metre Uygulaması - dB Ses Seviyesi | iPhone için Gürültü Ölçer</title>
-    <meta name="title" content="Desibel Metre Uygulaması - dB Ses Seviyesi | iPhone için Gürültü Ölçer">
-    <meta name="description" content="iPhone için desibel metre uygulaması - gerçek zamanlı dB ölçümleri, NIOSH ve OSHA modları, frekans analizi ve maruziyet takibi. İşyeri güvenliği ve işitme koruması için profesyonel ses seviyesi ölçer.">
-    <meta name="keywords" content="decibel, meter, noise, db, desibel ölçer, db ölçer, ses ölçer, gürültü ölçer, desibel, ses seviyesi, frekans">
+    <title>Desibel ölçer ve ses seviyesi</title>
+    <meta name="title" content="Desibel ölçer ve ses seviyesi">
+    <meta name="description" content="Ses seviyesini iPhone veya Android'de desibel olarak ölçün. Gerçek zamanlı dB, NIOSH ve OSHA modları, frekans analizi ve gürültü maruziyeti. Ücretsiz.">
+    <meta name="keywords" content="desibel ölçer, ses seviyesi, dB, gürültü">
     <meta name="author" content="omoot apps">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <meta name="language" content="Turkish">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,24 +42,60 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://decibel-meter.app/tr/">
-    <meta property="og:title" content="Desibel Metre Uygulaması - dB Ses Seviyesi | iPhone için Gürültü Ölçer">
-    <meta property="og:description" content="iPhone için desibel metre uygulaması - gerçek zamanlı dB ölçümleri, NIOSH ve OSHA modları, frekans analizi ve maruziyet takibi. İşyeri güvenliği ve işitme koruması için profesyonel ses seviyesi ölçer.">
-    <meta property="og:image" content="https://decibel-meter.app/assets/images/decibel-meter/optimized/Frame 3028.png">
+    <meta property="og:title" content="Desibel ölçer ve ses seviyesi">
+    <meta property="og:description" content="Ses seviyesini iPhone veya Android'de desibel olarak ölçün. Gerçek zamanlı dB, NIOSH ve OSHA modları, frekans analizi ve gürültü maruziyeti. Ücretsiz.">
+    <meta property="og:image" content="https://decibel-meter.app/assets/images/decibel-meter/optimized/og.png">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Decibel Meter: dB Sound Level iOS App">
-    <meta property="og:image:secure_url" content="https://decibel-meter.app/assets/images/decibel-meter/optimized/Frame 3028.png">
+    <meta property="og:image:alt" content="iPhone ve Android için desibel metre uygulaması">
+    <meta property="og:image:secure_url" content="https://decibel-meter.app/assets/images/decibel-meter/optimized/og.png">
     <meta property="og:site_name" content="Decibel Meter: dB Sound Level">
     <meta property="og:locale" content="tr_TR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="pl_PL">
+    <meta property="og:locale:alternate" content="ja_JP">
+    <meta property="og:locale:alternate" content="pt_BR">
+    <meta property="og:locale:alternate" content="zh_CN">
+    <meta property="og:locale:alternate" content="ko_KR">
+    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:locale:alternate" content="nl_NL">
+    <meta property="og:locale:alternate" content="uk_UA">
+    <meta property="og:locale:alternate" content="ar_SA">
+    <meta property="og:locale:alternate" content="sv_SE">
+    <meta property="og:locale:alternate" content="zh_TW">
+    <meta property="og:locale:alternate" content="pt_PT">
+    <meta property="og:locale:alternate" content="vi_VN">
+    <meta property="og:locale:alternate" content="id_ID">
+    <meta property="og:locale:alternate" content="th_TH">
+    <meta property="og:locale:alternate" content="cs_CZ">
+    <meta property="og:locale:alternate" content="da_DK">
+    <meta property="og:locale:alternate" content="nb_NO">
+    <meta property="og:locale:alternate" content="fi_FI">
+    <meta property="og:locale:alternate" content="he_IL">
+    <meta property="og:locale:alternate" content="ca_ES">
+    <meta property="og:locale:alternate" content="hr_HR">
+    <meta property="og:locale:alternate" content="el_GR">
+    <meta property="og:locale:alternate" content="hi_IN">
+    <meta property="og:locale:alternate" content="hu_HU">
+    <meta property="og:locale:alternate" content="ms_MY">
+    <meta property="og:locale:alternate" content="es_MX">
+    <meta property="og:locale:alternate" content="ro_RO">
+    <meta property="og:locale:alternate" content="sk_SK">
+    <meta property="og:locale:alternate" content="fr_CA">
     <meta property="og:updated_time" content="2026-07-06T00:00:00+00:00">
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://decibel-meter.app/tr/">
-    <meta name="twitter:title" content="Desibel Metre Uygulaması - dB Ses Seviyesi | iPhone için Gürültü Ölçer">
-    <meta name="twitter:description" content="iPhone için desibel metre uygulaması - gerçek zamanlı dB ölçümleri, NIOSH ve OSHA modları, frekans analizi ve maruziyet takibi. İşyeri güvenliği ve işitme koruması için profesyonel ses seviyesi ölçer.">
-    <meta name="twitter:image" content="https://decibel-meter.app/assets/images/decibel-meter/optimized/Frame 3028.png">
-    <meta name="twitter:image:alt" content="Decibel Meter: dB Sound Level iOS App">
+    <meta name="twitter:title" content="Desibel ölçer ve ses seviyesi">
+    <meta name="twitter:description" content="Ses seviyesini iPhone veya Android'de desibel olarak ölçün. Gerçek zamanlı dB, NIOSH ve OSHA modları, frekans analizi ve gürültü maruziyeti. Ücretsiz.">
+    <meta name="twitter:image" content="https://decibel-meter.app/assets/images/decibel-meter/optimized/og.png">
+    <meta name="twitter:image:alt" content="iPhone ve Android için desibel metre uygulaması">
     
     <!-- App Store -->
     <meta name="apple-itunes-app" content="app-id=6756241739">
@@ -339,25 +396,21 @@
             background-clip: unset !important;
             filter: none !important;
             text-shadow: none !important;
-            font-size: 1.5rem !important;
+            font-size: 0.9375rem !important;
+            line-height: 1.25 !important;
+            margin-top: 18px !important;
             margin-bottom: 16px !important;
-            margin-top: 0 !important;
             font-weight: 700 !important;
-            letter-spacing: 0.02em !important;
+            letter-spacing: 0.04em !important;
             text-transform: uppercase;
         }
         
         @media (max-width: 768px) {
             .app-slogan {
-                font-size: 1.25rem !important;
-                margin-bottom: 30px !important;
-                margin-top: 0 !important;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .app-slogan {
-                font-size: 1.125rem !important;
+                font-size: 0.8125rem !important;
+                line-height: 1.2 !important;
+                margin-top: 16px !important;
+                margin-bottom: 14px !important;
             }
         }
         
@@ -681,6 +734,68 @@
         }
     
         
+        html.os-ios .store-android,
+        html.os-android .store-ios { display: none !important; }
+        .app-badges,
+        .cta-buttons {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            align-items: center;
+            gap: 14px;
+        }
+        .app-badges .store,
+        .cta-buttons .store {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 14px;
+            width: auto !important;
+            flex: none;
+            align-self: center;
+            margin: 0;
+            padding: 16px 18px !important;
+            border: 0;
+            border-radius: 16px !important;
+            background: #8b5cf6;
+            color: #07111F !important;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: 0;
+            text-transform: none !important;
+            text-decoration: none;
+            white-space: nowrap;
+            box-shadow: none !important;
+        }
+        .store-play { background: #3ECF8E !important; color: #07111F !important; }
+        html.os-ios .store,
+        html.os-android .store-play { background: #8b5cf6 !important; color: #07111F !important; }
+        .store:hover { filter: brightness(1.05); }
+        .store .apple,
+        .store .play-mark { width: 24px; height: 24px; flex: none; display: block; margin: 0 !important; }
+        .store-label { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.05; text-align: start; }
+        .store-soft { font-weight: 500; font-size: 0.72em; color: inherit !important; }
+        .store-strong { font-weight: 800; font-size: 1em; color: inherit !important; }
+        .store .free {
+            padding-left: 12px;
+            border-left: 1px solid rgba(7, 17, 31, 0.22);
+            font-weight: 700;
+            color: inherit !important;
+        }
+        [dir="rtl"] .store .free { padding-left: 0; padding-right: 12px; border-left: 0; border-right: 1px solid rgba(7, 17, 31, 0.22); }
+        @media (max-width: 1100px) {
+            .app-badges, .cta-buttons { flex-wrap: wrap !important; justify-content: center; }
+        }
+        @media (max-width: 768px) {
+            .app-badges, .cta-buttons { justify-content: center; }
+            .app-badges .store, .cta-buttons .store { align-self: center; }
+        }
+
+        
+        
+        
+        
         .footer-lang {
             display: flex;
             align-items: center;
@@ -748,13 +863,13 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Decibel Meter: Ses seviyesi",
-        "alternateName": ["Decibel Meter App", "dB Sound Level", "Sound Level Meter"],
+        "alternateName": ["Decibel Meter"],
         "url": "https://decibel-meter.app/tr/",
+        "image": "https://decibel-meter.app/assets/images/decibel-meter/optimized/logo.png",
         "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "iOS",
+        "operatingSystem": "iOS, Android",
         "inLanguage": "tr",
-        "datePublished": "2024-01-01",
-        "dateModified": "2026-07-06",
+        "dateModified": "2026-11-08",
         "author": {
             "@type": "Organization",
             "name": "omoot apps",
@@ -765,8 +880,13 @@
             "price": "0",
             "priceCurrency": "USD"
         },
-        "description": "iPhone için desibel metre uygulaması - gerçek zamanlı dB ölçümleri, NIOSH ve OSHA modları, frekans analizi ve maruziyet takibi. İşyeri güvenliği ve işitme koruması için profesyonel ses seviyesi ölçer.",
-        "screenshot": "https://decibel-meter.app/assets/images/decibel-meter/optimized/Frame 3028.png",
+        "description": "Ses seviyesini iPhone veya Android'de desibel olarak ölçün. Gerçek zamanlı dB, NIOSH ve OSHA modları, frekans analizi ve gürültü maruziyeti. Ücretsiz.",
+        "screenshot": [
+            "https://decibel-meter.app/assets/images/decibel-meter/optimized/Frame 3028.png",
+            "https://decibel-meter.app/assets/images/decibel-meter/optimized/Frame 3043.jpg",
+            "https://decibel-meter.app/assets/images/decibel-meter/optimized/Frame 3044.jpg",
+            "https://decibel-meter.app/assets/images/decibel-meter/optimized/Frame 3045.jpg"
+        ],
         "featureList": [
             "Birden fazla ölçüm modu",
             "Gerçek zamanlı izleme",
@@ -775,11 +895,11 @@
             "Maruziyet takibi",
             "Profesyonel PDF raporları"
         ],
-        "softwareVersion": "1.0",
-        "releaseNotes": "Initial release with all core features",
-        "downloadUrl": "https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739",
-        "installUrl": "https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739",
-        "softwareRequirements": "iOS 15.1 or later"
+        "downloadUrl": [
+            "https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739",
+            "https://play.google.com/store/apps/details?id=com.ohmyapp.decibel"
+        ],
+        "installUrl": "https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739"
     }
     </script>
 
@@ -787,15 +907,32 @@
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Decibel Meter App - dB Sound Level",
-        "alternateName": "Decibel Meter App",
+        "name": "Decibel Meter: Ses seviyesi",
         "url": "https://decibel-meter.app/tr/",
-        "description": "Official landing page for Decibel Meter: dB Sound Level, a decibel meter app for iPhone.",
+        "inLanguage": "tr",
+        "description": "Ses seviyesini iPhone veya Android'de desibel olarak ölçün. Gerçek zamanlı dB, NIOSH ve OSHA modları, frekans analizi ve gürültü maruziyeti. Ücretsiz.",
         "publisher": {
             "@type": "Organization",
             "name": "omoot apps",
             "url": "https://omoot.app/"
         }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "url": "https://decibel-meter.app/tr/",
+        "name": "Desibel ölçer ve ses seviyesi",
+        "inLanguage": "tr",
+        "description": "Ses seviyesini iPhone veya Android'de desibel olarak ölçün. Gerçek zamanlı dB, NIOSH ve OSHA modları, frekans analizi ve gürültü maruziyeti. Ücretsiz.",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "Decibel Meter: Ses seviyesi",
+            "url": "https://decibel-meter.app/tr/"
+        },
+        "primaryImageOfPage": "https://decibel-meter.app/assets/images/decibel-meter/optimized/og.png"
     }
     </script>
 
@@ -819,7 +956,7 @@
                             "name": "Desibel metre uygulaması nedir?",
                             "acceptedAnswer": {
                                       "@type": "Answer",
-                                      "text": "Bir desibel metre uygulaması ses seviyesini dB cinsinden ölçer. Decibel Meter: Ses seviyesi, iPhone'da NIOSH/OSHA modları, maruziyet takibi ve frekans analizi ekler."
+                                      "text": "Bir desibel metre uygulaması ses seviyesini dB cinsinden ölçer. Decibel Meter: Ses seviyesi, iPhone ve Android'de NIOSH/OSHA modları, maruziyet takibi ve frekans analizi ekler."
                             }
                   },
                   {
@@ -827,7 +964,7 @@
                             "name": "Bu desibel metre uygulaması ücretsiz mi?",
                             "acceptedAnswer": {
                                       "@type": "Answer",
-                                      "text": "Evet - App Store'dan ücretsiz indirilir. Premium özellikler isteğe bağlı uygulama içi satın almalardır."
+                                      "text": "Evet - App Store ve Google Play'den ücretsiz indirilir. Premium özellikler isteğe bağlı uygulama içi satın almalardır."
                             }
                   },
                   {
@@ -910,21 +1047,21 @@
         <div class="app-hero-container">
             <div class="app-hero-content">
                 <div class="app-icon-large">
-                    <a href="https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739" target="_blank" rel="noopener noreferrer" aria-label="App Store'dan indirin" style="display: block; text-decoration: none;">
-                        <img src="../assets/images/decibel-meter/optimized/logo.png" alt="Decibel Meter: dB Sound Level Logo" class="app-logo" width="120" height="120" loading="eager" decoding="async">
-                    </a>
+                    <img src="../assets/images/decibel-meter/optimized/logo.png" alt="Decibel Meter: dB Sound Level" class="app-logo" width="120" height="120" loading="eager" decoding="async">
                 </div>
-                <p class="app-slogan">iPhone için desibel metre uygulaması</p>
+                <p class="app-slogan">iPhone ve Android için desibel metre uygulaması</p>
                 <h1 class="app-title">Profesyonel bir <span class="highlight-decibel">ses seviyesi ölçer</span></h1>
-                <p class="app-tagline"><a href="https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739" class="app-store-link" target="_blank" rel="noopener noreferrer">Decibel Meter: Ses seviyesi</a> işyerindeki gürültüyü izler, işitmenizi korur ve NIOSH ile OSHA modlarıyla doğru, gerçek zamanlı desibel ölçümleri sunar.</p>
+                <p class="app-tagline">Decibel Meter: Ses seviyesi işyerindeki gürültüyü izler, işitmenizi korur ve NIOSH ile OSHA modlarıyla doğru, gerçek zamanlı desibel ölçümleri sunar.</p>
                 <div class="app-badges">
-                    <a href="https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739" target="_blank" rel="noopener noreferrer" class="btn btn-app-store" aria-label="App Store'dan indirin">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 12px; vertical-align: middle;">
-                            <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"></path>
-                        </svg>
-                        <span>App Store'dan indirin</span>
-                        <span class="btn-divider"></span>
-                        <span class="btn-free">Ücretsiz</span>
+                    <a href="https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739" target="_blank" rel="noopener noreferrer" class="store store-lg store-ios" aria-label="App Store'dan indirin">
+                        <svg class="apple" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"></path></svg>
+                        <span class="store-label"><span class="store-soft">İndir</span><span class="store-strong">App Store</span></span>
+                        <span class="free">Ücretsiz</span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.ohmyapp.decibel" target="_blank" rel="noopener noreferrer" class="store store-lg store-play store-android" aria-label="İndir Google Play">
+                        <svg class="play-mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M6.2 3.4c-.7.4-1.2 1.2-1.2 2.1v13c0 .9.5 1.7 1.2 2.1.7.4 1.6.4 2.3 0l11.2-6.5c.8-.4 1.3-1.2 1.3-2.1s-.5-1.7-1.3-2.1L8.5 3.4c-.7-.4-1.6-.4-2.3 0z"/></svg>
+                        <span class="store-label"><span class="store-soft">İndir</span><span class="store-strong">Google Play</span></span>
+                        <span class="free">Ücretsiz</span>
                     </a>
                 </div>
             </div>
@@ -1047,7 +1184,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title"><span class="title-accent">Desibel metre uygulaması</span> nedir?</h2>
-                <p class="section-subtitle about-copy">Bir desibel metre uygulaması, telefonunuzun mikrofonunu kullanarak ses basıncı seviyesini dB cinsinden ölçer. <a href="https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739" class="app-store-link" target="_blank" rel="noopener noreferrer">Decibel Meter: Ses seviyesi</a>, iPhone için bir ses seviyesi ölçerdir - gerçek zamanlı izleme, NIOSH/OSHA modları, frekans analizi, maruziyet takibi ve PDF raporları.</p>
+                <p class="section-subtitle about-copy">Bir desibel metre uygulaması, telefonunuzun mikrofonunu kullanarak ses basıncı seviyesini dB cinsinden ölçer. Decibel Meter: Ses seviyesi, iPhone ve Android için bir ses seviyesi ölçerdir - gerçek zamanlı izleme, NIOSH/OSHA modları, frekans analizi, maruziyet takibi ve PDF raporları.</p>
             </div>
         </div>
     </section>
@@ -1056,7 +1193,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Desibel metre uygulaması <span class="title-accent">SSS</span></h2>
-                <p class="section-subtitle">iPhone için desibel metre uygulamamız hakkında sık sorulan sorular</p>
+                <p class="section-subtitle">iPhone ve Android için desibel metre uygulamamız hakkında sık sorulan sorular</p>
             </div>
             <div class="faq-list">
                 <details class="faq-item">
@@ -1065,7 +1202,7 @@
                         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </summary>
                     <div class="faq-answer-wrap">
-                        <p class="faq-answer">Bir desibel metre uygulaması ses seviyesini dB cinsinden ölçer. <a href="https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739" class="app-store-link" target="_blank" rel="noopener noreferrer">Decibel Meter: Ses seviyesi</a>, iPhone'da NIOSH/OSHA modları, maruziyet takibi ve frekans analizi ekler.</p>
+                        <p class="faq-answer">Bir desibel metre uygulaması ses seviyesini dB cinsinden ölçer. Decibel Meter: Ses seviyesi, iPhone ve Android'de NIOSH/OSHA modları, maruziyet takibi ve frekans analizi ekler.</p>
                     </div>
                 </details>
                 <details class="faq-item">
@@ -1074,7 +1211,7 @@
                         <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </summary>
                     <div class="faq-answer-wrap">
-                        <p class="faq-answer">Evet - App Store'dan ücretsiz indirilir. Premium özellikler isteğe bağlı uygulama içi satın almalardır.</p>
+                        <p class="faq-answer">Evet - App Store ve Google Play'den ücretsiz indirilir. Premium özellikler isteğe bağlı uygulama içi satın almalardır.</p>
                     </div>
                 </details>
                 <details class="faq-item">
@@ -1120,15 +1257,17 @@
     <section class="cta-section">
         <div class="cta-card">
             <h2 class="cta-title">Desibel metre uygulamasını indirin</h2>
-            <p class="cta-description">iPhone'da <a href="https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739" class="app-store-link" target="_blank" rel="noopener noreferrer">Decibel Meter: Ses seviyesi</a> edinin - işyeri güvenliği, işitme koruması ve akustik analiz için gerçek zamanlı dB ölçümleri.</p>
+            <p class="cta-description">iPhone'da Decibel Meter: Ses seviyesi edinin - işyeri güvenliği, işitme koruması ve akustik analiz için gerçek zamanlı dB ölçümleri.</p>
             <div class="cta-buttons">
-                <a href="https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739" target="_blank" rel="noopener noreferrer" class="btn btn-app-store" aria-label="App Store'dan indirin">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 12px; vertical-align: middle;">
-                        <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"></path>
-                    </svg>
-                    <span>App Store'dan indirin</span>
-                    <span class="btn-divider"></span>
-                    <span class="btn-free">Ücretsiz</span>
+                <a href="https://apps.apple.com/tr/app/decibel-meter-db-sound-level/id6756241739" target="_blank" rel="noopener noreferrer" class="store store-lg store-ios" aria-label="App Store'dan indirin">
+                    <svg class="apple" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"></path></svg>
+                    <span class="store-label"><span class="store-soft">İndir</span><span class="store-strong">App Store</span></span>
+                    <span class="free">Ücretsiz</span>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.ohmyapp.decibel" target="_blank" rel="noopener noreferrer" class="store store-lg store-play store-android" aria-label="İndir Google Play">
+                    <svg class="play-mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M6.2 3.4c-.7.4-1.2 1.2-1.2 2.1v13c0 .9.5 1.7 1.2 2.1.7.4 1.6.4 2.3 0l11.2-6.5c.8-.4 1.3-1.2 1.3-2.1s-.5-1.7-1.3-2.1L8.5 3.4c-.7-.4-1.6-.4-2.3 0z"/></svg>
+                    <span class="store-label"><span class="store-soft">İndir</span><span class="store-strong">Google Play</span></span>
+                    <span class="free">Ücretsiz</span>
                 </a>
             </div>
         </div>
@@ -1141,7 +1280,7 @@
                     <div class="logo-circle">D</div>
                     <span class="logo-text">Decibel Meter: Ses seviyesi</span>
                 </div>
-                                                                <div class="footer-lang">
+                                                                                                                                <div class="footer-lang">
                     <label for="lang-select" class="footer-lang-label">Dil</label>
                     <select id="lang-select" class="lang-select" aria-label="Dil">
                         <option value="/">EN</option>
