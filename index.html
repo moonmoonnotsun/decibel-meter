@@ -796,6 +796,10 @@
         
         
         
+        
+        
+        
+        
         .footer-lang {
             display: flex;
             align-items: center;
@@ -1041,20 +1045,10 @@
     <link rel="alternate" hreflang="x-default" href="https://decibel-meter.app/">
     <script>
         (function () {
-            var ua = navigator.userAgent || "";
-            if (/bot|crawl|spider|slurp|preview|facebookexternalhit|embedly|pinterest|whatsapp|telegram/i.test(ua)) return;
-            var routes = {"de":"/de/","fr":"/fr/","es":"/es/","ru":"/ru/","pl":"/pl/","ja":"/ja/","pt":"/pt/","pt-br":"/pt/","zh":"/zh/","zh-cn":"/zh/","zh-hans":"/zh/","ko":"/ko/","it":"/it/","nl":"/nl/","tr":"/tr/","uk":"/uk/","ua":"/uk/","ar":"/ar/","sv":"/sv/","zh-tw":"/zh-tw/","zh-hant":"/zh-tw/","zh-hk":"/zh-tw/","pt-pt":"/pt-pt/","vi":"/vi/","id":"/id/","th":"/th/","cs":"/cs/","da":"/da/","nb":"/nb/","no":"/nb/","nn":"/nb/","fi":"/fi/","he":"/he/","ca":"/ca/","hr":"/hr/","el":"/el/","hi":"/hi/","hu":"/hu/","ms":"/ms/","es-mx":"/es-mx/","ro":"/ro/","sk":"/sk/","fr-ca":"/fr-ca/"};
             var path = window.location.pathname;
-            if (path !== '/' && path !== '/index.html') return;
-
-            var langs = navigator.languages || [navigator.language || 'en'];
-            var primary = (langs[0] || 'en').toLowerCase();
-            if (primary === 'en' || primary.indexOf('en-') === 0) return;
-
-            var tag = primary;
-            var base = primary.split('-')[0];
-            if (routes[tag]) { window.location.replace(routes[tag]); return; }
-            if (routes[base]) { window.location.replace(routes[base]); return; }
+            if (!/\/index\.html$/.test(path)) return;
+            var next = path.replace(/index\.html$/, '');
+            window.location.replace(next + window.location.search + window.location.hash);
         })();
     </script>
 </head>
@@ -1068,7 +1062,7 @@
                     <img src="assets/images/decibel-meter/optimized/logo.png" alt="Decibel Meter: dB Sound Level" class="app-logo" width="120" height="120" loading="eager" decoding="async">
                 </div>
                 <p class="app-slogan">Decibel Meter App for iPhone and Android</p>
-                <h1 class="app-title">Professional <span class="highlight-decibel">sound</span> level meter</h1>
+                <h1 class="app-title">Professional <span class="highlight-decibel">decibel</span> sound level meter</h1>
                 <p class="app-tagline">Decibel Meter: dB Sound Level monitors workplace noise, protects your hearing, and delivers accurate real-time decibel measurements with NIOSH and OSHA modes.</p>
                 <div class="app-badges">
                     <a href="https://apps.apple.com/us/app/decibel-meter-db-sound-level/id6756241739" target="_blank" rel="noopener noreferrer" class="store store-lg store-ios" aria-label="Download on the App Store">
@@ -1298,7 +1292,7 @@
                     <div class="logo-circle">D</div>
                     <span class="logo-text">Decibel Meter: dB Sound Level</span>
                 </div>
-                                                                                                                <div class="footer-lang">
+                                                                                                                                                                                <div class="footer-lang">
                     <label for="lang-select" class="footer-lang-label">Language</label>
                     <select id="lang-select" class="lang-select" aria-label="Language">
                         <option value="/" selected>EN</option>

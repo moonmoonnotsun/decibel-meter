@@ -796,6 +796,10 @@
         
         
         
+        
+        
+        
+        
         .footer-lang {
             display: flex;
             align-items: center;
@@ -1002,7 +1006,15 @@
         ]
     }
     </script>
-<link rel="alternate" hreflang="en" href="https://decibel-meter.app/">
+                                                                                                                                                        <script>
+        (function () {
+            var path = window.location.pathname;
+            if (!/\/index\.html$/.test(path)) return;
+            var next = path.replace(/index\.html$/, '');
+            window.location.replace(next + window.location.search + window.location.hash);
+        })();
+    </script>
+    <link rel="alternate" hreflang="en" href="https://decibel-meter.app/">
     <link rel="alternate" hreflang="de" href="https://decibel-meter.app/de/">
     <link rel="alternate" hreflang="fr" href="https://decibel-meter.app/fr/">
     <link rel="alternate" hreflang="es" href="https://decibel-meter.app/es/">
@@ -1280,7 +1292,7 @@
                     <div class="logo-circle">D</div>
                     <span class="logo-text">Decibel Meter: Nivel de sonido</span>
                 </div>
-                                                                                                                                <div class="footer-lang">
+                                                                                                                                                                                                <div class="footer-lang">
                     <label for="lang-select" class="footer-lang-label">Idioma</label>
                     <select id="lang-select" class="lang-select" aria-label="Idioma">
                         <option value="/">EN</option>
